@@ -8,6 +8,7 @@ public class Driver {
 
     private static WebDriver driver;
 
+
     public static WebDriver setUp(){
         if(driver == null){
             WebDriverManager.chromedriver().setup();
@@ -19,8 +20,8 @@ public class Driver {
 
     public static void tearDown(){
         if(driver != null){
+            driver.close();
             driver.quit();
-            //driver = null; TODO: check et
         }
     }
 

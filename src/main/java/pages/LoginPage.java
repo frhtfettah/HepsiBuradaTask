@@ -1,13 +1,35 @@
 package pages;
 
+import base.Base;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import util.Driver;
 
-public class LoginPage {
+import java.time.Duration;
+
+public class LoginPage extends Base {
 
     By userName = By.id("txtUserName");
     By loginButtonAfterUserName = By.id("btnLogin");
     By password = By.id("txtPassword");
     By loginButtonAfterPassword = By.id("btnEmailSelect");
+    By loginWithFacebook = By.xpath("//*[text()=\" Facebook ile Giriş yap\"]");
+    By facebookMail = By.id("email");
+    By facebookPassword = By.id("pass");
+    By facebookLoginBtn = By.id("loginbutton");
 
-    //Hepsiburadatask123 password
+
+    WebDriver driver = Driver.setUp();
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+    public void loginAction(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(loginWithFacebook));
+        driver.findElement(loginWithFacebook).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(facebookMail));
+        driver.findElement(facebookMail).sendKeys("fettahogluferhat@gmail.com");
+        driver.findElement(facebookPassword).sendKeys("Hepsiburadatask123");
+        driver.findElement(facebookLoginBtn).click();
+    }
 }
