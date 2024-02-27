@@ -27,12 +27,12 @@ public class Base extends Driver {
         xpath.click();
     }
 
-    public void sendKey(WebElement xpath, String key){
+    public void sendKeys(WebElement xpath, String key){
         wait.until(ExpectedConditions.elementToBeSelected(xpath));
         xpath.sendKeys(key);
     }
 
-    public String getElementText(WebElement xpath){
+    public String getElementsText(WebElement xpath){
         return xpath.getText();
     }
 
