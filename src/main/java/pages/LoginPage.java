@@ -11,15 +11,10 @@ import java.time.Duration;
 
 public class LoginPage extends Base {
 
-    By userName = By.id("txtUserName");
-    By loginButtonAfterUserName = By.id("btnLogin");
-    By password = By.id("txtPassword");
-    By loginButtonAfterPassword = By.id("btnEmailSelect");
     By loginWithFacebook = By.xpath("//*[text()=\" Facebook ile Giriş yap\"]");
     By facebookMail = By.id("email");
     By facebookPassword = By.id("pass");
     By facebookLoginBtn = By.id("loginbutton");
-
 
     WebDriver driver = Driver.setUp();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
