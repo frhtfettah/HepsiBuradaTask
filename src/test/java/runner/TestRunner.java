@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
         monochrome = true,
         plugin = {"pretty",
                   "html:target/HtmlReport.html"}
-
 )
 public class TestRunner {
 }
