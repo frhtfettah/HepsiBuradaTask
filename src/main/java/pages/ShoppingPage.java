@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.Driver;
 
 import java.time.Duration;
 
@@ -19,7 +18,7 @@ public class ShoppingPage extends Base {
     By shoppingCart = By.id("shoppingCart");
     By addedToCartPopUp = By.xpath("//div[@class=\"hb-toast-close-icon-holder\"]");
 
-    WebDriver driver = Driver.setUp();
+    WebDriver driver = Base.setUp();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     Actions action = new Actions(driver);
 

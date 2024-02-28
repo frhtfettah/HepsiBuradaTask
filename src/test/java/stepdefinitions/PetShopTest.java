@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import base.Base;
 import io.cucumber.java.AfterAll;
 import io.cucumber.java.BeforeAll;
 import io.cucumber.java.en.Given;
@@ -10,7 +11,6 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.ShoppingCartPage;
 import pages.ShoppingPage;
-import util.Driver;
 
 public class PetShopTest {
 
@@ -21,13 +21,13 @@ public class PetShopTest {
 
     @BeforeAll
     public static void setUp() {
-        Driver.setUp();
+        Base.setUp();
     }
 
     @AfterAll
     public static void tearDown() {
         shoppingCartPage.emptyCart();
-        Driver.tearDown();
+        Base.tearDown();
     }
 
     @Given("User is on the HepsiBurada main page")

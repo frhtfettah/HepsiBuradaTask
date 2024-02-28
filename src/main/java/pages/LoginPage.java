@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.Driver;
 
 import java.time.Duration;
 
@@ -16,7 +15,7 @@ public class LoginPage extends Base {
     By facebookPassword = By.id("pass");
     By facebookLoginBtn = By.id("loginbutton");
 
-    WebDriver driver = Driver.setUp();
+    WebDriver driver = Base.setUp();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     public void loginAction(){

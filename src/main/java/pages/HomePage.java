@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.Driver;
 
 import java.time.Duration;
 
@@ -15,7 +14,7 @@ public class HomePage extends Base {
     By mainLoginButton = By.id("myAccount");
     By loginButton = By.id("login");
 
-    WebDriver driver = Driver.setUp();
+    WebDriver driver = Base.setUp();
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     Actions action = new Actions(driver);
 
