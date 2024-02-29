@@ -17,7 +17,8 @@ public class ShoppingCartPage extends Base {
     By deleteBasket = By.xpath("//div[contains(@class,\"basket_delete\")]");
     By confirmDelete = By.xpath("//button[text()=\"Tümünü sil\"]");
 
-    WebDriver driver = Base.setUp();
+    HomePage homePage = new HomePage();
+    WebDriver driver = Base.setUp(homePage.getBrowser());
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 
     public String getCartPageTitle(){

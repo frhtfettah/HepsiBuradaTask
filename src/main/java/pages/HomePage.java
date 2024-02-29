@@ -14,7 +14,15 @@ public class HomePage extends Base {
     By mainLoginButton = By.id("myAccount");
     By loginButton = By.id("login");
 
-    WebDriver driver = Base.setUp();
+    private String browser;
+    public String getBrowser() {
+        return browser;
+    }
+    public void setBrowser(String browser) {
+        this.browser = browser;
+    }
+
+    WebDriver driver = Base.setUp(browser);
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     Actions action = new Actions(driver);
 
@@ -28,5 +36,4 @@ public class HomePage extends Base {
         wait.until(ExpectedConditions.elementToBeClickable(loginButton));
         driver.findElement(loginButton).click();
     }
-
 }

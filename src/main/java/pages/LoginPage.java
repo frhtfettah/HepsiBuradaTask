@@ -9,13 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class LoginPage extends Base {
-
     By loginWithFacebook = By.xpath("//*[text()=\" Facebook ile Giriş yap\"]");
     By facebookMail = By.id("email");
     By facebookPassword = By.id("pass");
     By facebookLoginBtn = By.id("loginbutton");
 
-    WebDriver driver = Base.setUp();
+    HomePage homePage = new HomePage();
+    WebDriver driver = Base.setUp(homePage.getBrowser());
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
     public void loginAction(){

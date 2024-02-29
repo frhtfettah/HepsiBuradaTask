@@ -18,7 +18,8 @@ public class ShoppingPage extends Base {
     By shoppingCart = By.id("shoppingCart");
     By addedToCartPopUp = By.xpath("//div[@class=\"hb-toast-close-icon-holder\"]");
 
-    WebDriver driver = Base.setUp();
+    HomePage homePage = new HomePage();
+    WebDriver driver = Base.setUp(homePage.getBrowser());
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     Actions action = new Actions(driver);
 
