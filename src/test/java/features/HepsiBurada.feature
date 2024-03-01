@@ -10,8 +10,7 @@ Scenario Outline: User checks if the shopping cart page works correctly when an 
   And User navigates to the Shopping Cart page and checks the page
 #Expected
   Then Shopping Cart page should be displayed without any problems
-  And Product should be added to the cart without any problems
-  And Other necessary buttons and fields that user checked are displayed correctly
+  And Necessary buttons and fields that user checked are displayed correctly
   Examples:
     | browser |
     | chrome |

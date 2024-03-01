@@ -11,11 +11,11 @@ import java.time.Duration;
 public class ShoppingCartPage extends Base {
 
     By quantity = By.name("quantity");
-    By productName = By.xpath("//div[contains(@class,\"product_name\")]");
-    By productVariant = By.xpath("//div[contains(@class,\"product_variant\")]");
     By basketItemCount = By.id("basket-item-count");
     By deleteBasket = By.xpath("//div[contains(@class,\"basket_delete\")]");
     By confirmDelete = By.xpath("//button[text()=\"Tümünü sil\"]");
+    By nameOfProduct = By.xpath("(//div[contains(@class, 'product_name')])[1]");
+    By priceOfProduct = By.xpath("//div[contains(@class, 'product_price_container')]");
 
     HomePage homePage = new HomePage();
     WebDriver driver = Base.setUp(homePage.getBrowser());
@@ -25,24 +25,26 @@ public class ShoppingCartPage extends Base {
         return driver.getTitle();
     }
 
-    public String checkProductName(){
-        wait.until(ExpectedConditions.presenceOfElementLocated(productName));
-        return driver.findElement(productName).getText();
-    }
-
     public String checkQuantity(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(quantity));
         return driver.findElement(quantity).getAttribute("value");
     }
 
-    public String checkProductVariant(){
-        return driver.findElement(productVariant).getText();
-    }
-
     public String checkBasketItemCount(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(basketItemCount));
         return driver.findElement(basketItemCount).getText();
     }
 
+    public String checkNameOfProduct(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(nameOfProduct));
+        return driver.findElement(nameOfProduct).getText();}
+
+    public String checkPriceOfProduct(){
+        wait.until(ExpectedConditions.presenceOfElementLocated(priceOfProduct));
+        return driver.findElement(priceOfProduct).getText();}
+
     public void emptyCart(){
+        wait.until(ExpectedConditions.elementToBeClickable(deleteBasket));
         driver.findElement(deleteBasket).click();
         wait.until(ExpectedConditions.elementToBeClickable(confirmDelete));
         driver.findElement(confirmDelete).click();

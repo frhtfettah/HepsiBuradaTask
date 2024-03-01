@@ -18,6 +18,9 @@ import static base.Base.driver;
 
 public class PetShopTest {
 
+    String nameOfSelectedProduct;
+    String priceOfSelectedProduct;
+
     @Given("User is on the HepsiBurada main page via {string}")
     public void moveToTheLoginPage(String arg0) {
         Base.setUp(arg0);
@@ -42,6 +45,8 @@ public class PetShopTest {
     public void addProductToCart() {
         ShoppingPage shoppingPage = new ShoppingPage();
         shoppingPage.selectAndAddProduct();
+        nameOfSelectedProduct = shoppingPage.getNameOfProduct();
+        priceOfSelectedProduct = shoppingPage.getPriceOfProduct();
     }
 
     @When("User navigates to the Shopping Cart page and checks the page")
@@ -57,22 +62,17 @@ public class PetShopTest {
         Assert.assertEquals("Sepetim", pageTitle);
     }
 
-    @Then("Product should be added to the cart without any problems")
-    public void checkProduct() {
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
-        String productName = shoppingCartPage.checkProductName();
-        Assert.assertEquals("Better Life Evcil Hayvanlar Için Pet Sırt Çantası - Gri (Yurt Dışından)", productName);
-    }
-
-    @Then("Other necessary buttons and fields that user checked are displayed correctly")
+    @Then("Necessary buttons and fields that user checked are displayed correctly")
     public void checkCartPageElements() {
         ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         String basketItemCount = shoppingCartPage.checkBasketItemCount();
         String quantity = shoppingCartPage.checkQuantity();
-        String productVariant = shoppingCartPage.checkProductVariant();
+        String nameOfProduct = shoppingCartPage.checkNameOfProduct();
+        String priceOfProduct = shoppingCartPage.checkPriceOfProduct();
+        Assert.assertEquals(nameOfSelectedProduct, nameOfProduct);
+        Assert.assertEquals(priceOfSelectedProduct, priceOfProduct);
         Assert.assertEquals("1", basketItemCount);
         Assert.assertEquals("1", quantity);
-        Assert.assertEquals("Siyah", productVariant);
     }
 
     @After
