@@ -2,14 +2,19 @@ package stepdefinitions;
 
 import base.Base;
 import io.cucumber.java.After;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ShoppingCartPage;
 import pages.ShoppingPage;
+
+import static base.Base.driver;
 
 public class PetShopTest {
 
@@ -68,11 +73,16 @@ public class PetShopTest {
         Assert.assertEquals("1", basketItemCount);
         Assert.assertEquals("1", quantity);
         Assert.assertEquals("Siyah", productVariant);
-        shoppingCartPage.emptyCart();
     }
 
     @After
-    public static void tearDown() {
+    public static void tearDown(Scenario scenario) {
+        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+        shoppingCartPage.emptyCart();
+        if(scenario.isFailed()) {
+            final byte[] screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", scenario.getName());
+        }
         Base.tearDown();
     }
 }

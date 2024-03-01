@@ -11,7 +11,8 @@ import org.junit.runner.RunWith;
         glue = "stepdefinitions",
         monochrome = true,
         plugin = {"pretty",
-                  "html:target/HtmlReport.html"}
+                  "html:target/HtmlReport.html",
+                  "html:target/selenium-reports"}
 )
 public class TestRunner {
 }
